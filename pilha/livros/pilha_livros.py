@@ -7,41 +7,76 @@ class PilhaLivros:
 
     def esta_vazia(self):
         """Verifica se a pilha está vazia"""
-        # return len(self.livros) == 0
         qtde_livros = len(self.livros)
+
         if qtde_livros == 0:
             return True
         else:
             return False
-
-    def tamanho(self):
-        """Exibir o tamanho da pilha"""
-        print(f"\nA pilha tem {len(self.livros)} livros")
+        # return len(self.livros) == 0
 
     def empilhar(self, livro):
-        """Adiciona um livro no topo da pilha"""
+        """Adiciona um livro na pilha"""
         self.livros.append(livro)
 
-    def topo(self):
-        """Mostra o livro que está no topo da pilha"""
+    def tamanho(self):
+        """Retorna o tamanho da pilha"""
+        print(f'A pilha tem {len(self.livros)} livros')
+
+    def desempilhar(self):
+        """Remove um livro da pilha"""
         if self.esta_vazia():
-            print(f'A pilha de livros está vazia')
+            print('A pilha está vazia')
+        else:
+            livro = self.livros.pop()
+            print(f'O livro {livro.titulo} foi retirado da pilha')
+            return livro
+
+    def topo(self):
+        """Verificar qual item está no topo da pilha"""
+        if self.esta_vazia():
+            print('A pilha está vazia')
         else:
             livro_topo = self.livros[-1]
-            print(f'O livro que esta no topo da pilha é ')
+            print('O livro que está no topo da pilha é')
             livro_topo.exibir_detalhes()
 
     def exibir_pilha(self):
-        """Exibe os itens da pilha de livros"""
-        print('\nOs itens que estão na pilha são: \n')
+        """Exibe os itens da pilha"""
+        print('Os livros que estão na pilha são:')
 
-        lista_invertida = reversed(self.livros)
-
-        for livro in lista_invertida:
+        for livro in reversed(self.livros):
             livro.exibir_detalhes()
 
-    def remover_livro_pilha(self, titulo):
-        """Remove um livro da pilha"""
-        for indice, livro in enumerate(self.livros):
-            if livro.titulo == titulo:
-                self.livros.pop(indice)
+    def mover_livro_topo(self, livro_mover):
+        """Move um livro específico para topo da pilha"""
+        pilha_aux = []
+        livro_procurado = None
+
+        while not self.esta_vazia():
+            livro = self.desempilhar()
+            if livro.titulo == livro_mover.titulo:
+                livro_procurado = livro
+                break
+
+            pilha_aux.append(livro)
+
+        for livro_desempilhado in pilha_aux:
+            self.empilhar(livro_desempilhado)
+
+        self.empilhar(livro_procurado)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

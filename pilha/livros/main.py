@@ -1,80 +1,52 @@
 from livro import Livro
 from pilha_livros import PilhaLivros
 
-# Inicia a pilha
-meus_livros = PilhaLivros()
+codigo_limpo = Livro(titulo='Código Limpo',
+                     autor='Robert C. Martin')
 
-print(f'Está vazia: {meus_livros.esta_vazia()}')
-meus_livros.tamanho()
+python_fluente = Livro('Python Fluente',
+                       'Luciano Ramalho')
 
-python_fluente = Livro(titulo="Python Fluente",
-                       autor="Luciano Ramalho",
-                       paginas=459,
-                       editora="Brasil")
+java_programar = Livro(autor='Paul Deitel',
+                       titulo='Java como programar')
 
-meus_livros.empilhar(python_fluente)
+codigo_limpo.exibir_detalhes()
+python_fluente.exibir_detalhes()
+java_programar.exibir_detalhes()
 
-meus_livros.tamanho()
+livros = PilhaLivros()
+print(livros.esta_vazia())
 
-java_programar = Livro("Java como Programar", "Paul Deitel", 934, "Brasil")
+livros.empilhar(codigo_limpo)
+livros.empilhar(python_fluente)
+livros.empilhar(java_programar)
 
-meus_livros.empilhar(java_programar)
+print(livros.esta_vazia())
 
-meus_livros.tamanho()
+livros.tamanho()
 
-meus_livros.topo()
+livros.desempilhar()
+livros.desempilhar()
+livros.desempilhar()
 
-meus_livros.exibir_pilha()
+livros.tamanho()
 
-so = Livro(titulo='Sistemas Operacionais',
-           autor='Edivaldo Serafin',
-           paginas=378,
-           editora='Brasil')
+livros.desempilhar()
 
-meus_livros.empilhar(so)
+livros.empilhar(codigo_limpo)
+livros.empilhar(python_fluente)
+livros.empilhar(java_programar)
 
-meus_livros.topo()
+livros.topo()
 
-meus_livros.exibir_pilha()
+print('\n')
 
-meus_livros.topo()
+livros.exibir_pilha()
+print('\n')
 
-meus_livros.remover_livro_pilha(java_programar.titulo)
-
-meus_livros.exibir_pilha()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+livros.mover_livro_topo(python_fluente)
+print('\n')
+livros.exibir_pilha()
 
 
 
