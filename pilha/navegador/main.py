@@ -14,7 +14,7 @@ abas.abrir_aba(github)
 
 abas.qtde_abas()
 
-# abas.fechar_aba()
+abas.fechar_aba()
 
 abas.aba_ativa()
 
