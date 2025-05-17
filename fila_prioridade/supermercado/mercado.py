@@ -9,7 +9,10 @@ class Supermercado:
         self.fila_rapida = 0
 
     def retirar_senha(self, pessoa: Pessoa):
-        pessoa.senha = str(uuid.uuid4()).split('-')[0].upper()
+        senha_atendimento = str(uuid.uuid4()).split('-')[0].upper()
+        senha_menor = senha_atendimento[0:3]
+        pessoa.senha = senha_menor
+
         print(f"Retirando a senha de {pessoa.nome}")
 
         if pessoa.idade >= 60:
